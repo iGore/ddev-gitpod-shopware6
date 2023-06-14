@@ -12,5 +12,6 @@ RUN curl -fsSL https://apt.fury.io/drud/gpg.key | gpg --dearmor | sudo tee /etc/
 RUN echo "deb [signed-by=/etc/apt/trusted.gpg.d/ddev.gpg] https://apt.fury.io/drud/ * *" | sudo tee /etc/apt/sources.list.d/ddev.list
 RUN sudo apt update && sudo apt install -y ddev
 
+FROM scratch as ddev-gitpod-base
 SHELL ["/bin/bash", "-c"]
 COPY --from=workspace-base / /
